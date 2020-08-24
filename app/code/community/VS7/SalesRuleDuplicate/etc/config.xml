@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <VS7_SalesRuleDuplicate>
+            <version>0.1.0</version>
+        </VS7_SalesRuleDuplicate>
+    </modules>
+    <global>
+        <models>
+            <vs7_salesruleduplicate>
+                <class>VS7_SalesRuleDuplicate_Model</class>
+            </vs7_salesruleduplicate>
+        </models>
+        <events>
+            <adminhtml_widget_container_html_before>
+                <observers>
+                    <vs7_salesruleduplicate_add_duplicate_button>
+                        <class>VS7_SalesRuleDuplicate_Model_Observer</class>
+                        <method>addDuplicateButton</method>
+                    </vs7_salesruleduplicate_add_duplicate_button>
+                </observers>
+            </adminhtml_widget_container_html_before>
+        </events>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <vs7_salesruleduplicate before="Mage_Adminhtml">VS7_SalesRuleDuplicate_Adminhtml</vs7_salesruleduplicate>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <vs7_salesruleduplicate translate="title" module="vs7_salesruleduplicate">
+                                            <title>VS7 SalesRule Duplicate Button</title>
+                                        </vs7_salesruleduplicate>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>
